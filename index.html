@@ -443,6 +443,13 @@ a:hover .play::after{background:var(--on-ice)}
 
 @media (max-width:860px){.ftr .logo{font-size:26px}.ftr{padding-block:48px calc(48px + env(safe-area-inset-bottom,0px))}.ftr-in{gap:22px}}
 
+
+/* phone: fade the photo itself to transparent so no edge line can show under BIOGRAPHY */
+@media (max-width:860px){
+  .hero-photo{margin-bottom:0;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 55%,transparent 98%);mask-image:linear-gradient(180deg,#000 0%,#000 55%,transparent 98%)}
+  .hero-photo-in::after{background:linear-gradient(180deg,rgba(5,5,5,.6) 0%,rgba(5,5,5,0) 30%)}
+}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>

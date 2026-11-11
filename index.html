@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en" class="lang-en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <style>html{scroll-padding-top:env(safe-area-inset-top,0px)}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>BUSTA-ROW Official</title>
-<meta name="description" content="BUSTA-ROW（バスタロー）公式サイト。世界18カ国で活躍するALL GENRE DJ / PRODUCER。Zouk Tokyo、ULTRA、EDC JAPAN、横浜開港祭メインステージ。">
+<meta name="description" content="BUSTA-ROW official website — ALL GENRE DJ / PRODUCER performing across 18 countries. Zouk Tokyo, ULTRA, EDC JAPAN, Yokohama Port Festival main stage.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="BUSTA-ROW Official">
-<meta property="og:description" content="BUSTA-ROW（バスタロー）公式サイト。世界18カ国で活躍するALL GENRE DJ / PRODUCER。Zouk Tokyo、ULTRA、EDC JAPAN、横浜開港祭メインステージ。">
+<meta property="og:description" content="BUSTA-ROW official website — ALL GENRE DJ / PRODUCER performing across 18 countries. Zouk Tokyo, ULTRA, EDC JAPAN, Yokohama Port Festival main stage.">
 <meta property="og:image" content="img/top-portrait.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#050505">
@@ -447,6 +447,8 @@ a:hover .play::after{background:var(--on-ice)}
 </style>
 </head>
 <body>
+<script>(function(){var l=null;try{l=localStorage.getItem('br-lang-v2')}catch(e){}if(l!=='ja')document.documentElement.classList.add('lang-en')})();</script>
+
 <!-- ============ HEADER ============ -->
 <header class="hdr" id="hdr">
   <div class="hdr-in">
@@ -459,8 +461,8 @@ a:hover .play::after{background:var(--on-ice)}
     </nav>
     <div class="hdr-r">
       <div class="lang" role="group" aria-label="Language">
-        <button type="button" id="lang-ja" data-lang="ja" aria-pressed="true">JP</button>
-        <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" id="lang-ja" data-lang="ja" aria-pressed="false">JP</button>
+        <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
       </div>
       <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
     </div>
@@ -722,7 +724,7 @@ a:hover .play::after{background:var(--on-ice)}
 <script>
 (function(){
   var root=document.documentElement;
-  var lang='ja';
+  var lang='en';
 
   /* ---------- language ---------- */
   function setLang(l){
@@ -730,11 +732,10 @@ a:hover .play::after{background:var(--on-ice)}
     root.classList.toggle('lang-en',l==='en');
     root.setAttribute('lang',l==='en'?'en':'ja');
     document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.lang===l))});
-    try{localStorage.setItem('br-lang',l)}catch(e){}
   }
-  try{var saved=localStorage.getItem('br-lang');if(saved==='en'||saved==='ja')lang=saved}catch(e){}
+  try{var saved=localStorage.getItem('br-lang-v2');if(saved==='en'||saved==='ja')lang=saved}catch(e){}
   setLang(lang);
-  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);try{localStorage.setItem('br-lang-v2',b.dataset.lang)}catch(e){}})});
 
   /* ---------- header ---------- */
   var hdr=document.getElementById('hdr'),burger=document.getElementById('burger');
